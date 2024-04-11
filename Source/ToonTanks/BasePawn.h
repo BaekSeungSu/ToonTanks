@@ -24,6 +24,9 @@ public:
 	UPROPERTY(VisibleInstanceOnly)
 	int32 VisibleInstanceOnlyInt = 32;
 
+	UPROPERTY(EditAnywhere)
+	float Speed = 400.f;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
