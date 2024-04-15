@@ -18,7 +18,14 @@ public:
 	ATank();
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override;
+
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
@@ -34,7 +41,7 @@ private:
 	float RotateSpeed = 50.f;
 
 	void Move(float Value);
-
 	void Turn(float value);
 
+	APlayerController* PlayerControllerRef;
 };
