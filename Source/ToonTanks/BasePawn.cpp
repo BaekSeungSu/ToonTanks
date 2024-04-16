@@ -3,6 +3,7 @@
 #include "BasePawn.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "DrawDebugHelpers.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -31,4 +32,10 @@ void ABasePawn::RotateTurret(FVector LookAtTarget)
 						 LookAtRotation,
 						 UGameplayStatics::GetWorldDeltaSeconds(this),
 						 5.f));
+}
+
+void ABasePawn::Fire()
+{
+	FVector FireSpot = ProjectileSpawnPoint->GetComponentLocation();
+	DrawDebugSphere(GetWorld(), FireSpot, 10.f, 12, FColor::Red, false, 3.f);
 }
