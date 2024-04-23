@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Tower.h"
 #include "Tank.h"
 #include "Kismet/GameplayStatics.h"
@@ -19,10 +18,10 @@ void ATower::Tick(float Deltatime)
 {
     Super::Tick(Deltatime);
 
-    if(InFireRange()){
+    if (InFireRange())
+    {
         RotateTurret(Tank->GetActorLocation());
     }
-
 }
 
 void ATower::HandleDestruction()
@@ -33,16 +32,22 @@ void ATower::HandleDestruction()
 
 void ATower::CheckFireCondition()
 {
-    if(InFireRange()){
+    if (Tank == nullptr){
+        return;
+    }
+    if (InFireRange() && Tank->bAlive)
+    {
         Super::Fire();
     }
 }
 
 bool ATower::InFireRange()
 {
-    if(Tank){
+    if (Tank)
+    {
         float Distance = FVector::Dist(GetActorLocation(), Tank->GetActorLocation());
-        if(Distance <= FireRange){
+        if (Distance <= FireRange)
+        {
             return true;
         }
     }
