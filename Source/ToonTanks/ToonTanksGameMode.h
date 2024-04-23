@@ -38,4 +38,5 @@ private:
 
 	int32 TargetTowers;
 	int32 GetTargetTowerCount();
+
 };
