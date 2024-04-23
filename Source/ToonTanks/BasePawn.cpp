@@ -6,6 +6,7 @@
 #include "DrawDebugHelpers.h"
 #include "Projectile.h"
 #include "Particles/ParticleSystemComponent.h"
+#include "Camera/CameraShakeBase.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -33,6 +34,9 @@ void ABasePawn::HandleDestruction()
 	}
 	if(DeathSound){
 		UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
+	}
+	if(DeathCameraShakeClass){
+		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DeathCameraShakeClass);
 	}
 }
 
